@@ -9,6 +9,16 @@
             "email": "vincent.guillemot@etudiant.univ-reims.fr"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^9",
         "friendsofphp/php-cs-fixer": "^3.15",
