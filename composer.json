@@ -1,0 +1,13 @@
+{
+    "name": "guil0221/tests-conception",
+    "description": "Tests avec PHPUnit",
+    "type": "project",
+    "license": "Copyleft",
+    "authors": [
+        {
+            "name": "Guillemot Vincent",
+            "email": "vincent.guillemot@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}
