@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace MyGames\Rules;
 
-class RockPaperScissors
+use MyGames\Rules\IRules;
+
+class RockPaperScissors implements IRules
 {
     public const PAPER='P';
     public const ROCK='R';
