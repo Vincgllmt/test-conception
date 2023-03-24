@@ -2,9 +2,18 @@
 
 declare(strict_types=1);
 
-namespace src\MyGames\Player;
+namespace MyGames\Player;
 
-class Player
+abstract class Player implements IPlayer
 {
+    private string $name;
 
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }
