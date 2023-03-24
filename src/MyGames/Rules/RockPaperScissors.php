@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src\MyGames\Rules;
+namespace MyGames\Rules;
 
 class RockPaperScissors
 {
@@ -36,6 +36,28 @@ class RockPaperScissors
                     'P' => 1,
                     default => -1,
                 };
+            }
         }
+        return 0;
+    }
+    public function checkGesture(string $gesture): bool
+    {
+        $bool = false;
+        foreach (self::GESTURES as $geste) {
+            if ($geste == $gesture) {
+                $bool = true;
+            }
+        }
+        return $bool;
+    }
+    protected function gestureIndex(string $gesture): int
+    {
+        $index = -1;
+        for ($i = 0; $i < 2; $i++) {
+            if (self::GESTURES[$i] == $gesture) {
+                $index = $i;
+            }
+        }
+        return $index;
     }
 }
