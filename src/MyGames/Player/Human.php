@@ -12,7 +12,7 @@ class Human extends Player
     {
         print_r($this->showPossibilities($gestures));
     }
-    protected function showPossibilities(array $gestures): string
+    public function showPossibilities(array $gestures): string
     {
         $possibilities = "";
         foreach ($gestures as $gesture) {
@@ -20,7 +20,7 @@ class Human extends Player
         }
         return $possibilities;
     }
-    protected function getInput(): string
+    public function getInput(): string
     {
         return readline("Veuillez choisir un mouvement : ");
     }

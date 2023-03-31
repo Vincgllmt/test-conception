@@ -7,12 +7,23 @@ namespace MyGames\Player;
 use MyGames\Rules\IRules;
 use PHPUnit\Framework\TestCase;
 
-class ComputerTest extends TestCase
+class HumanTest extends TestCase
 {
-    protected Computer $computer;
+    protected Human $human;
     protected function setUp(): void
     {
-        $this->computer = new Computer("Ordi");
+        $this->human = new Human('test');
+    }
+    public function testShowPossibilities(): void
+    {
+        $this->assertSame('Rock Paper Scissors ', $this->human->showPossibilities(['Rock','Paper','Scissors']));
+    }
+    public function testGetInput(): void
+    {
+        $mock = $this->createPartialMock(Human::class, ['getInput']);
+        $mock->method('getInput')->willReturn('Rock');
+        $this->expectOutputString('Rock');
+        print $mock->getInput();
     }
     public function moveProvider(): array
     {
@@ -26,8 +37,8 @@ class ComputerTest extends TestCase
     /**
      * @param string $gesture
      * @param string $expected
-     * @dataProvider moveProvider
      * @return void
+     * @dataProvider moveProvider
      */
     public function testPlayOneMove(string $gesture, string $expected): void
     {
