@@ -6,7 +6,7 @@ namespace MyGames\Rules;
 
 use MyGames\Rules\IRules;
 
-class RockPaperScissors implements IRules
+class RockPaperScissorsLizardSpock implements IRules
 {
     public const PAPER='P';
     public const ROCK='R';
