@@ -35,10 +35,10 @@ class GameTest extends TestCase
 
     /**
      * @dataProvider playProvider
-     * @param array $playSet the array set of compare play results
-     * @param int $finalScore the final score who should be reached
+     * @param array $set
+     * @param int $finalScore
      */
-    public function testPlay(array $playSet, int $finalScore): void
+    public function testPlay(array $set, int $finalScore): void
     {
         $rules = $this->getMockBuilder(RockPaperScissors::class)
             ->enableOriginalConstructor()
@@ -46,10 +46,10 @@ class GameTest extends TestCase
             ->getMock();
 
         $rules->method('compare')
-            ->will($this->onConsecutiveCalls(...$playSet));
+            ->will($this->onConsecutiveCalls(...$set));
 
         $game = new Game($rules, new Computer('ordi'), new Computer('AlBOTor'));
-        $game->play(count($playSet));
+        $game->play(count($set));
 
         $this->assertSame($finalScore, $game->getScore());
     }
