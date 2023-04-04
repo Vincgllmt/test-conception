@@ -9,7 +9,7 @@ use MyGames\Rules\IRules;
 
 class Game
 {
-    private const score = 0;
+    private int $score;
     private IRules $rules;
     private Iplayer $player1;
     private Iplayer $player2;
@@ -21,9 +21,30 @@ class Game
     }
     public function play(int $turns): void
     {
+        for ($i = 0; $i < $turns; $i++) {
+            $player1name = $this->player1->getName();
+            $player2name = $this->player2->getName();
+
+            switch($this->playOneMove()) {
+                case 1:
+                    echo "$player1name wins this round\n";
+                    $this->score += 1;
+                    break;
+                case 0:
+                    echo "Draw\n";
+                    break;
+                case -1:
+                    echo "$player2name wins this round\n";
+                    $this->score -= 1;
+                    break;
+            }
+        }
     }
     public function playOneMove(): int
     {
+        $player1move = $this->player1->playOneMove($this->rules);
+        $player2move = $this->player2->playOneMove($this->rules);
+        return $this->rules->compare($player1move, $player2move);
     }
     public function getScore(): int
     {
@@ -31,5 +52,6 @@ class Game
     }
     public function winner(): IPlayer
     {
+        return $this->getScore() >= 0 ? $this->player1 : $this->player2;
     }
 }
